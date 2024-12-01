@@ -1,0 +1,92 @@
+SkipListSet Java Implementation
+
+Overview
+
+This project is an implementation of a genericized SkipListSet<T> in Java, which implements the SortedSet<T> interface. The skip list is a probabilistic data structure that provides an efficient way to maintain a sorted collection while offering expected logarithmic time complexity for search, insert, and delete operations.
+
+The implementation includes three main components:
+
+SkipListSet: The primary class implementing SortedSet<T>, which manages the skip list nodes and handles all operations like add, remove, and search.
+
+SkipListSetIterator: An internal iterator class that provides the functionality to iterate through the skip list in sorted order.
+
+SkipListNode: An internal node wrapper class representing individual elements in the skip list.
+
+Features
+
+Implements SortedSet<T> and hence supports all the methods defined in Set<T>, Collection<T>, and Iterable<T>.
+
+Logarithmic time complexity for add, remove, and search operations.
+
+Supports bulk operations such as addAll() and removeAll().
+
+Includes a rebalancing mechanism (reBalance()) to optimize the height of the skip list nodes.
+
+Class Structure
+
+SkipListSet
+
+Implements SortedSet<T> with methods like add(), remove(), contains(), first(), last(), etc.
+
+Uses an internal linked list structure to maintain multiple levels of nodes, enabling faster traversal.
+
+Balances itself after bulk operations to maintain optimal performance.
+
+SkipListSetIterator
+
+Provides an implementation of Iterator<T> to traverse through the skip list.
+
+Supports the hasNext(), next(), and remove() methods for iteration.
+
+SkipListNode
+
+Represents the nodes in the skip list.
+
+Contains a value and an ArrayList of pointers (nextNodes) for maintaining references at various levels.
+
+Requirements
+
+Java 8 or later.
+
+The skip list must be compiled with javac SkipListSet.java.
+
+Testing requires the SkipListTestHarness.java to validate functionality and performance.
+
+Installation and Compilation
+
+Clone the repository or download the source files.
+
+Compile the SkipListSet and SkipListTestHarness files:
+
+javac SkipListSet.java SkipListTestHarness.java
+
+Run the test harness to evaluate the skip list's performance and correctness:
+
+java SkipListTestHarness
+
+Testing
+
+The project includes SkipListTestHarness.java, which runs a series of test cases to validate the correctness and performance of the skip list implementation. The tests compare the SkipListSet with other data structures like TreeSet and LinkedList for a variety of operations including addition, search, deletion, and balancing.
+
+Sample Test Output
+
+CASE: 100,000 strings of length 1,000, 10,000 finds, 5,000 removals. Generating...
+  SkipListSet add:    241ms  find:     18ms  del:     75ms  (5,236 missing) find:     27ms
+                                             bal:     50ms  (5,236 missing) find:     18ms
+  TreeSet     add:     72ms  find:      8ms  del:      6ms  (5,236 missing) find:      9ms
+
+
+
+  Performance
+
+The skip list implementation exhibits logarithmic performance characteristics for add, remove, and search operations.
+
+Balancing and managing levels are done probabilistically to ensure  complexity.
+
+The performance is comparable to TreeSet in most cases and is validated by running against large test datasets.
+
+
+Author
+
+Devon Villalona
+
